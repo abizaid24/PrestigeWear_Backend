@@ -1,446 +1,368 @@
-# 🛍️ PrestigeWear — E-Commerce Backend API
+<div align="center">
 
-> **FastAPI + PostgreSQL + JWT** par bana hua ek clean, production-style REST API jo kisi bhi e-commerce store (fashion/clothing brand jaisa **PrestigeWear**) ko power de sakta hai — users, products, categories, cart aur orders sab kuch ek jagah.
+# 🛍️ PrestigeWear Backend
 
-<p align="left">
-  <img alt="Python" src="https://img.shields.io/badge/Python-3.10%2B-blue?logo=python&logoColor=white">
-  <img alt="FastAPI" src="https://img.shields.io/badge/FastAPI-0.104.1-009688?logo=fastapi&logoColor=white">
-  <img alt="PostgreSQL" src="https://img.shields.io/badge/PostgreSQL-14%2B-336791?logo=postgresql&logoColor=white">
-  <img alt="SQLAlchemy" src="https://img.shields.io/badge/SQLAlchemy-2.0.23-red">
-  <img alt="JWT" src="https://img.shields.io/badge/Auth-JWT-black?logo=jsonwebtokens">
-  <img alt="License" src="https://img.shields.io/badge/License-MIT-green">
+### Production-Ready E-Commerce REST API
+
+Built with **Python**, **FastAPI**, **PostgreSQL**, and **JWT Authentication**
+
+A scalable backend API powering a modern e-commerce platform with secure authentication, product management, shopping cart, order processing, and role-based administration.
+
+<p>
+
+<img src="https://img.shields.io/badge/Python-3.12+-3776AB?style=for-the-badge&logo=python&logoColor=white"/>
+
+<img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white"/>
+
+<img src="https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=postgresql&logoColor=white"/>
+
+<img src="https://img.shields.io/badge/SQLAlchemy-red?style=for-the-badge"/>
+
+<img src="https://img.shields.io/badge/JWT-Authentication-success?style=for-the-badge"/>
+
+<img src="https://img.shields.io/badge/Alembic-Migrations-orange?style=for-the-badge"/>
+
 </p>
 
----
-
-## ✨ Kya Khaas Hai Is Project Mein?
-
-| | |
-|---|---|
-| 🔐 | JWT-based Authentication (Register / Login / Profile) |
-| 👥 | Role-Based Access Control — **Admin** vs **User** |
-| 🗂️ | Category Management (CRUD) |
-| 👕 | Product Catalog with **Search** aur **Image Upload** |
-| 🛒 | Persistent Shopping Cart per user |
-| 📦 | Order Placement with automatic **stock deduction** |
-| 📊 | Auto-generated **Swagger UI** & **ReDoc** documentation |
-| 🧱 | Clean, layered architecture (routers → schemas → models → DB) |
-| 🔁 | Alembic-powered database migrations |
-
-Full technical breakdown neeche **[Documentation](#-full-documentation)** section mein hai — yeh README aapko sirf **5 minute mein project chalane** aur samajhne ke liye hai.
+</div>
 
 ---
 
-## 📋 Table of Contents
+# 🚀 Overview
 
-- [Tech Stack](#-tech-stack)
-- [Project Architecture](#-project-architecture)
-- [Folder Structure](#-folder-structure)
-- [Database Schema](#-database-schema)
-- [Quick Start](#-quick-start)
-- [Environment Variables](#-environment-variables)
-- [API Overview](#-api-overview)
-- [Authentication Flow](#-authentication-flow)
-- [Example Workflow](#-example-workflow-register--shop--checkout)
-- [Product Image Upload](#-product-image-upload)
-- [Order Status Lifecycle](#-order-status-lifecycle)
-- [Security Highlights](#-security-highlights)
-- [Testing the API](#-testing-the-api)
-- [Roadmap / Future Improvements](#-roadmap--future-improvements)
-- [Full Documentation](#-full-documentation)
-- [License](#-license)
+PrestigeWear Backend is a production-style e-commerce REST API built using FastAPI and PostgreSQL.
+
+The backend provides secure authentication, role-based authorization, product and category management, shopping cart functionality, inventory control, and complete order processing through a clean, scalable architecture.
+
+The project follows backend engineering best practices including layered architecture, JWT security, database migrations, and automatic API documentation.
 
 ---
 
-## 🧰 Tech Stack
+# ✨ Key Features
 
-| Layer | Technology | Version |
-|---|---|---|
-| Language | Python | 3.10+ |
-| Web Framework | FastAPI | 0.104.1 |
-| ASGI Server | Uvicorn | 0.24.0 |
-| Database | PostgreSQL | 14+ |
-| ORM | SQLAlchemy | 2.0.23 |
-| Migrations | Alembic | 1.12.1 |
-| Validation | Pydantic / pydantic-settings | 2.5.0 / 2.1.0 |
-| Auth | python-jose (JWT) | 3.3.0 |
-| Password Hashing | passlib + bcrypt | 1.7.4 / 4.0.1 |
-| File Uploads | python-multipart | 0.0.6 |
+## 🔐 Authentication & Security
+
+- JWT Authentication
+- Secure Password Hashing (bcrypt)
+- Access Token Authorization
+- Role-Based Access Control
+- Protected API Routes
 
 ---
 
-## 🏗️ Project Architecture
+## 👥 User Management
 
-Project ek **layered / clean architecture** pattern follow karta hai — har layer ki apni zimmedari hai, isliye code padhna aur maintain karna aasan hai:
+- User Registration
+- Login
+- Profile Management
+- Customer & Admin Roles
 
-```
-Client (Browser / Postman / Frontend App)
-        │
-        ▼
-   ┌─────────────┐
-   │  Routers    │   ← HTTP endpoints (auth, products, cart, orders...)
-   └─────────────┘
-        │
-        ▼
-   ┌─────────────┐
-   │  Schemas    │   ← Pydantic validation (request/response shape)
-   └─────────────┘
-        │
-        ▼
-   ┌─────────────┐
-   │   Core      │   ← Security (JWT, bcrypt), Config, Dependencies
-   └─────────────┘
-        │
-        ▼
-   ┌─────────────┐
-   │   Models    │   ← SQLAlchemy ORM tables
-   └─────────────┘
-        │
-        ▼
-   ┌─────────────┐
-   │ PostgreSQL  │
-   └─────────────┘
+---
+
+## 🗂 Category Management
+
+- Create Categories
+- Update Categories
+- Delete Categories
+- Browse Categories
+
+---
+
+## 👕 Product Management
+
+- Product CRUD
+- Product Images
+- Product Search
+- Inventory Management
+- Category Assignment
+
+---
+
+## 🛒 Shopping Cart
+
+- Persistent User Cart
+- Quantity Management
+- Automatic Price Calculation
+- Cart Management
+
+---
+
+## 📦 Order Management
+
+- Place Orders
+- Order History
+- Automatic Stock Deduction
+- Order Status Tracking
+
+Order lifecycle:
+
+```text
+Pending
+   │
+Processing
+   │
+Shipped
+   │
+Delivered
+
+or
+
+Cancelled
 ```
 
 ---
 
-## 📁 Folder Structure
+# 🏗 System Architecture
 
+```text
+             Client Application
+                     │
+                     ▼
+             FastAPI REST API
+                     │
+      ┌──────────────┼──────────────┐
+      │              │              │
+ Authentication   Business Logic   Validation
+      │              │              │
+      └──────────────┼──────────────┘
+                     │
+                     ▼
+               SQLAlchemy ORM
+                     │
+                     ▼
+                PostgreSQL
 ```
+
+---
+
+# 🛠 Technology Stack
+
+| Category | Technologies |
+|-----------|--------------|
+| Language | Python 3.12 |
+| Framework | FastAPI |
+| Database | PostgreSQL |
+| ORM | SQLAlchemy |
+| Validation | Pydantic |
+| Authentication | JWT |
+| Password Security | bcrypt |
+| Database Migration | Alembic |
+| API Documentation | Swagger / ReDoc |
+
+---
+
+# 📂 Project Structure
+
+```bash
 backend/
+│
 ├── app/
-│   ├── main.py                     # App entry point + router registration + CORS + static files
-│   ├── database/
-│   │   └── database.py             # Engine, SessionLocal, Base, get_db()
-│   ├── models/
-│   │   └── models.py               # 7 SQLAlchemy tables + OrderStatus enum
-│   ├── schemas/
-│   │   ├── user.py                 # UserCreate, UserLogin, UserResponse, Token
-│   │   ├── category.py             # CategoryCreate, CategoryUpdate, CategoryResponse
-│   │   ├── product.py              # ProductCreate, ProductUpdate, ProductResponse
-│   │   ├── cart.py                 # CartItemAdd, CartItemResponse, CartResponse
-│   │   └── order.py                # OrderItemResponse, OrderResponse
-│   ├── routers/
-│   │   ├── auth.py                 # /register, /login, /profile
-│   │   ├── categories.py           # /categories
-│   │   ├── products.py             # /products (+ image upload)
-│   │   ├── cart.py                 # /cart
-│   │   └── orders.py               # /orders
 │   ├── core/
-│   │   ├── config.py                # Settings (.env loader)
-│   │   ├── security.py              # bcrypt hashing + JWT create/verify
-│   │   └── dependencies.py          # get_current_user (auth guard)
-│   ├── services/                    # Reserved for business-logic services
-│   └── utils/                       # Reserved for shared helper functions
-├── uploads/products/                # Uploaded product images live here
-├── alembic/                         # Database migration scripts
-├── alembic.ini
+│   ├── database/
+│   ├── models/
+│   ├── schemas/
+│   ├── routers/
+│   ├── services/
+│   ├── utils/
+│   └── main.py
+│
+├── uploads/
+├── alembic/
 ├── requirements.txt
-├── .env                             # Environment variables (never commit this!)
+├── .env.example
 └── README.md
 ```
 
 ---
 
-## 🗄️ Database Schema
+# ⚡ Quick Start
 
-**7 tables**, poori tarah relational integrity ke saath:
+## Clone Repository
 
+```bash
+git clone https://github.com/abizaid24/prestigewear-backend.git
+
+cd prestigewear-backend
 ```
-users ──────1:1──────► cart
-users ──────1:N──────► orders
-categories ─1:N──────► products
-cart ───────1:N──────► cart_items ◄──N:1── products
-orders ─────1:N──────► order_items ◄─N:1── products
-```
-
-| Table | Purpose | Key Fields |
-|---|---|---|
-| `users` | Registered accounts | `id, full_name, email (unique), password_hash, role, created_at` |
-| `categories` | Product categories | `id, name (unique), description, created_at` |
-| `products` | Store catalog | `id, name, description, price, stock_quantity, category_id, image_url, created_at` |
-| `cart` | One cart per user | `id, user_id (unique), created_at` |
-| `cart_items` | Products inside a cart | `id, cart_id, product_id, quantity` |
-| `orders` | Placed orders | `id, user_id, total_amount, status, created_at` |
-| `order_items` | Snapshot of products in an order | `id, order_id, product_id, quantity, price` |
-
-> 💡 `order_items.price` order ke waqt ki price save karta hai — agar baad mein product ki price change ho jaye to purane orders ka total sahi hi rahega.
 
 ---
 
-## 🚀 Quick Start
+## Create Virtual Environment
 
-### Prerequisites
-- Python **3.10+**
-- PostgreSQL **14+**
-- `pip`
+### Windows
 
-### 1. Clone & Enter Project
-```bash
-git clone https://github.com/YOUR_USERNAME/prestigewear-backend.git
-cd prestigewear-backend/backend
+```powershell
+python -m venv .venv
+
+.\.venv\Scripts\activate
 ```
 
-### 2. Virtual Environment Banao
+### Linux / macOS
+
 ```bash
-python -m venv venv
+python3 -m venv .venv
 
-# Windows
-venv\Scripts\activate
-
-# macOS / Linux
-source venv/bin/activate
+source .venv/bin/activate
 ```
 
-### 3. Dependencies Install Karo
+---
+
+## Install Dependencies
+
 ```bash
+pip install --upgrade pip
+
 pip install -r requirements.txt
 ```
 
-### 4. PostgreSQL Database Banao
-```sql
-CREATE DATABASE prestigewear_db;
-```
+---
 
-### 5. `.env` File Configure Karo
-Root (`backend/`) mein `.env` file banao:
+## Configure Environment
+
+Create a `.env` file.
+
 ```env
-DATABASE_URL=postgresql://postgres:YOUR_PASSWORD@localhost:5432/prestigewear_db
-SECRET_KEY=your-super-secret-key-minimum-32-characters
+DATABASE_URL=postgresql://username:password@localhost/prestigewear
+
+SECRET_KEY=your_secret_key
+
 ALGORITHM=HS256
+
 ACCESS_TOKEN_EXPIRE_MINUTES=60
 ```
 
-### 6. Migrations Chalao
+---
+
+## Run Database Migrations
+
 ```bash
 alembic upgrade head
 ```
 
-### 7. Server Start Karo
+---
+
+## Start Development Server
+
 ```bash
 uvicorn app.main:app --reload
 ```
 
-### 8. Docs Kholo 🎉
-```
-Swagger UI  → http://localhost:8000/docs
-ReDoc       → http://localhost:8000/redoc
-```
+Swagger UI
 
----
-
-## 🔑 Environment Variables
-
-| Variable | Description | Example |
-|---|---|---|
-| `DATABASE_URL` | PostgreSQL connection string | `postgresql://user:pass@localhost:5432/db` |
-| `SECRET_KEY` | JWT signing secret (32+ chars, random) | `a1b2c3...` |
-| `ALGORITHM` | JWT signing algorithm | `HS256` |
-| `ACCESS_TOKEN_EXPIRE_MINUTES` | Token validity window | `60` |
-
-⚠️ `.env` ko **kabhi bhi** git repo mein commit mat karo — `.gitignore` mein hona chahiye.
-
----
-
-## 📡 API Overview
-
-### 🔐 Authentication
-| Method | Endpoint | Auth | Description |
-|---|---|---|---|
-| POST | `/register` | Public | Naya account banao |
-| POST | `/login` | Public | Login karo, JWT token lo |
-| GET | `/profile` | Required | Apni profile dekho |
-
-### 🗂️ Categories
-| Method | Endpoint | Auth | Description |
-|---|---|---|---|
-| POST | `/categories/` | Admin | Naya category banao |
-| GET | `/categories/` | Public | Sari categories list karo |
-| PUT | `/categories/{id}` | Admin | Category update karo |
-| DELETE | `/categories/{id}` | Admin | Category delete karo |
-
-### 👕 Products
-| Method | Endpoint | Auth | Description |
-|---|---|---|---|
-| POST | `/products/` | Admin | Naya product banao |
-| GET | `/products/` | Public | Sare products dekho |
-| GET | `/products/?search=shirt` | Public | Naam/description se search |
-| GET | `/products/{id}` | Public | Single product detail |
-| PUT | `/products/{id}` | Admin | Product update karo |
-| DELETE | `/products/{id}` | Admin | Product delete karo (+ image cleanup) |
-| POST | `/products/{id}/upload-image` | Admin | Product picture upload karo |
-
-### 🛒 Cart
-| Method | Endpoint | Auth | Description |
-|---|---|---|---|
-| POST | `/cart/add` | Required | Cart mein product add karo |
-| GET | `/cart/` | Required | Apna cart dekho |
-| DELETE | `/cart/item/{id}` | Required | Cart se item hatao |
-
-### 📦 Orders
-| Method | Endpoint | Auth | Description |
-|---|---|---|---|
-| POST | `/orders/` | Required | Cart se order place karo |
-| GET | `/orders/` | Required | Apne sare orders dekho |
-| GET | `/orders/{id}` | Required | Single order detail |
-| GET | `/orders/admin/all` | Admin | **Sab** customers ke sare orders (admin panel ke liye) |
-
-> Detailed request/response bodies, status codes aur error cases ke liye [DOCUMENTATION.md](./DOCUMENTATION.md) dekho.
-
----
-
-## 🔐 Authentication Flow
-
-Yeh API **Bearer JWT** tokens use karti hai.
-
-```
-1. POST /register  →  Account create hota hai (role = "user")
-2. POST /login     →  Email + password verify hote hain → JWT token milta hai
-3. Har protected request mein header bhejo:
-       Authorization: Bearer <access_token>
-4. Server token verify karta hai (get_current_user) aur request process karta hai
-```
-
-**Swagger UI mein test karne ka tareeqa:**
-1. `/login` se token copy karo
-2. Top-right **"Authorize"** button dabao
-3. Token paste karo → Authorize → ab sab protected routes "Try it out" se test ho sakte hain
-
----
-
-## 🧪 Example Workflow: Register → Shop → Checkout
-
-```bash
-# 1. Register
-POST /register
-{
-  "full_name": "Ali Ahmed",
-  "email": "ali@example.com",
-  "password": "password123"
-}
-
-# 2. Login
-POST /login
-{
-  "email": "ali@example.com",
-  "password": "password123"
-}
-# → { "access_token": "...", "token_type": "bearer" }
-
-# 3. Browse products
-GET /products/?search=shirt
-
-# 4. Add to cart
-POST /cart/add
-Authorization: Bearer <token>
-{ "product_id": 1, "quantity": 2 }
-
-# 5. Place order
-POST /orders/
-Authorization: Bearer <token>
-# → cart automatically empty ho jata hai, stock kam ho jata hai
-```
-
----
-
-## 🖼️ Product Image Upload
-
-Admin products ke saath image bhi attach kar sakta hai:
-
-```
-POST /products/{id}/upload-image
-Authorization: Bearer <admin_token>
-Content-Type: multipart/form-data
-Field: image  (File)
-```
-
-- **Allowed formats:** JPG, JPEG, PNG, GIF, WEBP
-- **Max size:** 5 MB
-- Image `uploads/products/` folder mein unique filename ke saath save hoti hai
-- `main.py` mein `/uploads` static route mount hai — image direct browser mein khul jati hai:
-  ```
-  http://localhost:8000/uploads/products/product_1_abc123.jpg
-  ```
-- Naya upload purani image ko automatically replace/delete kar deta hai
-
----
-
-## 🔄 Order Status Lifecycle
-
-```
-pending → processing → shipped → delivered
-             │
-             └──────► cancelled
-```
-
-| Status | Meaning |
-|---|---|
-| `pending` | Order place hua, abhi process nahi hua |
-| `processing` | Order tayyar ho raha hai |
-| `shipped` | Order dispatch ho gaya |
-| `delivered` | Customer ko mil gaya |
-| `cancelled` | Order cancel ho gaya |
-
----
-
-## 🛡️ Security Highlights
-
-- ✅ Passwords kabhi plain text mein store nahi hote — **bcrypt** hashing
-- ✅ JWT tokens **60 minutes** baad expire hote hain (configurable)
-- ✅ Role-based guards — sirf `admin` role hi sensitive actions kar sakta hai
-- ✅ Users sirf apna **hi** cart aur orders dekh/edit kar sakte hain
-- ✅ Order placement se pehle **stock validation** hoti hai
-- ✅ Upload endpoint file **type aur size** dono validate karta hai
-- ✅ `.env` secrets kabhi source control mein commit nahi hote
-
----
-
-## 🧪 Testing the API
-
-**Option 1 — Swagger UI (recommended):**
 ```
 http://localhost:8000/docs
 ```
 
-**Option 2 — curl:**
-```bash
-curl -X POST "http://localhost:8000/register" \
-  -H "Content-Type: application/json" \
-  -d '{"full_name":"Test User","email":"test@test.com","password":"test123"}'
-```
+ReDoc
 
-**Making a user an admin (directly in DB):**
-```sql
-UPDATE users SET role = 'admin' WHERE email = 'admin@example.com';
+```
+http://localhost:8000/redoc
 ```
 
 ---
 
-## 🗺️ Roadmap / Future Improvements
+# 📡 API Modules
 
-- [ ] Refresh tokens + token revocation
-- [ ] Pagination on `/products` and `/orders`
-- [ ] Order status update endpoint for admins
-- [ ] Payment gateway integration
-- [ ] Rate limiting on auth endpoints
-- [ ] Unit & integration test suite (pytest)
-- [ ] Docker & docker-compose setup
-- [ ] Product reviews & ratings
-
----
-
-## 📖 Full Documentation
-
-Is README mein sirf overview hai. Har module, request/response schema, error codes, security internals, aur deployment notes ke liye:
-
-👉 **[DOCUMENTATION.md](./DOCUMENTATION.md)** dekho
+| Module | Endpoint |
+|----------|----------------|
+| Authentication | /auth |
+| Users | /users |
+| Categories | /categories |
+| Products | /products |
+| Shopping Cart | /cart |
+| Orders | /orders |
 
 ---
 
-## 📄 License
+# 🔐 Authentication Flow
 
-MIT License — free to use for learning and portfolio purposes.
+```text
+Register
+     │
+     ▼
+Login
+     │
+     ▼
+Generate JWT Token
+     │
+     ▼
+Access Protected APIs
+     │
+     ▼
+Authorized Request
+```
 
 ---
 
-<p align="center">Made with FastAPI + PostgreSQL 🚀</p>
+# 📸 Screenshots
+
+Add screenshots here:
+
+- Swagger Documentation
+- Product API
+- Shopping Cart
+- Order API
+- PostgreSQL Database
+- Project Structure
+
+---
+
+# 🚀 Roadmap
+
+### ✅ Implemented
+
+- JWT Authentication
+- RBAC
+- Product CRUD
+- Category CRUD
+- Shopping Cart
+- Order Processing
+- Inventory Management
+- Swagger Documentation
+
+### 🔜 Planned
+
+- Refresh Tokens
+- Stripe Payments
+- Docker Support
+- CI/CD Pipeline
+- Product Reviews
+- Wishlist
+- Email Notifications
+- Redis Caching
+
+---
+
+# 🌟 Why This Project?
+
+PrestigeWear Backend demonstrates production-ready backend engineering using FastAPI.
+
+The project showcases REST API development, secure authentication, relational database design, layered architecture, inventory management, and scalable business logic suitable for real-world e-commerce applications.
+
+---
+
+# 📄 License
+
+Licensed under the MIT License.
+
+---
+
+# 👨‍💻 Author
+
+## Hafiz Abi Zaid
+
+**Python Backend Developer • FastAPI • Agentic AI**
+
+📧 **hafizabizaid@gmail.com**
+
+🌐 **https://github.com/abizaid24**
+
+---
+
+<div align="center">
+
+### ⭐ If you found this project useful, consider giving it a Star!
+
+Building scalable backend systems with Python & FastAPI.
+
+</div>
